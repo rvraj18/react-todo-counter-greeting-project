@@ -1,12 +1,13 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { useTodos } from "../hooks/useTodos";
+import { useContext } from "react";
+import { AppContext } from "../Providers/AppContext";
 
 const TodoDetails = () => {
   const { id } = useParams();
-  const { todos } = useTodos();
   const navigate = useNavigate();
+  const { todos } = useContext(AppContext);
 
-  const todo = todos.find(t => t.id === id);
+  const todo = todos.find((t) => String(t.id) === id);
 
   if (!todo) return <p>Todo not found</p>;
 
@@ -19,4 +20,5 @@ const TodoDetails = () => {
     </>
   );
 };
+
 export default TodoDetails;

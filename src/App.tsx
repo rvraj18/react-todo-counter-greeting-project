@@ -1,12 +1,9 @@
 import React, { useContext } from "react";
-import Greeting from "./components/Greetings";
-import Counter from "./components/Counter";
-import TodoList from "./components/TodoList";
+import { Outlet } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { AppContext } from "./Providers/AppContext";
 import "./styles/app.css";
 
-import { AppContext } from "./Providers/AppContext";
-
-// Theme Wrapper Component
 const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { theme, setTheme } = useContext(AppContext);
 
@@ -16,6 +13,8 @@ const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 
   return (
     <div className={`app-container ${theme}`}>
+      <Navbar />
+
       <button onClick={toggleTheme}>
         Switch to {theme === "light" ? "Dark" : "Light"} Theme
       </button>
@@ -25,22 +24,10 @@ const ThemeWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   );
 };
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <ThemeWrapper>
-      <h1>Hello from React + TypeScript + Webpack ⚛️</h1>
-      <p>Everything works perfectly!</p>
-
-      {/* Greeting Component */}
-      <div className="card">
-        <Greeting />
-      </div>
-
-      {/* Counter Component */}
-      <Counter />
-
-      {/* Todo List Component */}
-      <TodoList />
+      <Outlet />
     </ThemeWrapper>
   );
 };

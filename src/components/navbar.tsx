@@ -5,6 +5,9 @@ const Navbar = () => {
     <nav style={{ gap: 20, display: "flex", marginBottom: 20 }}>
       <NavLink to="/" end>Home</NavLink>
       <NavLink to="/todos">Todos</NavLink>
+      <NavLink to="/counter">Counter</NavLink>
+      <NavLink to="/users">Users</NavLink>
+      <NavLink to="/posts">Posts</NavLink>
     </nav>
   );
 };
